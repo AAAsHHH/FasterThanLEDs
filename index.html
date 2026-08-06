@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>LED Controller</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a1a2e">
+  <style>
+    /* Same beautiful CSS as in your ESP page */
+    /* ... copy it from your existing code ... */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✦ LED Control ✦</h1>
+    <!-- IP address setting -->
+    <div class="card" style="padding:10px;">
+      <label style="color:#aaa; font-size:0.8rem;">Controller IP</label>
+      <input type="text" id="ipInput" value="192.168.4.1" style="width:100%; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:white;">
+    </div>
+    <div class="card" style="padding:10px;">
+      <canvas id="stripPreview" width="400" height="45"></canvas>
+    </div>
+    <!-- Color picker + RGB sliders -->
+    <div class="card color-section">
+      <label style="font-size:0.9rem; color:#aaa;">Pick a Color</label>
+      <input type="color" id="colorPicker" value="#ff0000" onchange="setColorFromPicker(this.value)">
+      <div class="rgb-sliders">
+        <span class="rgb-label">R</span><input type="range" min="0" max="255" value="255" id="rSlider" oninput="setColorFromSliders()">
+        <span class="rgb-label">G</span><input type="range" min="0" max="255" value="0" id="gSlider" oninput="setColorFromSliders()">
+        <span class="rgb-label">B</span><input type="range" min="0" max="255" value="0" id="bSlider" oninput="setColorFromSliders()">
+      </div>
+    </div>
+    <!-- Effects -->
+    <div class="card">
+      <div style="font-size:0.9rem; color:#aaa; margin-bottom:8px;">Effect</div>
+      <div class="effect-grid">
+        <button onclick="setEffect('static')" id="btn-static">Static</button>
+        <button onclick="setEffect('rainbow')" id="btn-rainbow">Rainbow</button>
+        <button onclick="setEffect('chase')" id="btn-chase">Chase</button>
+        <button onclick="setEffect('breathe')" id="btn-breathe">Breathe</button>
+        <button onclick="setEffect('palette')" id="btn-palette">Palette</button>
+      </div>
+    </div>
+    <!-- Sliders -->
+    <div class="card">
+      <div class="slider-group">
+        <div class="slider-header"><span>LED Count</span><span class="value-badge" id="ledCountVal">60</span></div>
+        <input type="range" min="1" max="300" value="60" id="ledCountSlider" oninput="setLedCountDebounced(this.value)">
+      </div>
+      <div class="slider-group" style="margin-top:12px;">
+        <div class="slider-header"><span>Brightness</span><span class="value-badge" id="brightVal">100</span></div>
+        <input type="range" min="0" max="255" value="100" id="brightSlider" oninput="setBrightnessDebounced(this.value)">
+      </div>
+      <div class="slider-group" style="margin-top:12px;">
+        <div class="slider-header"><span>Speed</span><span class="value-badge" id="speedVal">50</span></div>
+        <input type="range" min="0" max="100" value="50" id="speedSlider" oninput="setSpeedDebounced(this.value)">
+      </div>
+    </div>
+    <footer>ARAsHHH WS28XX Controller</footer>
+  </div>
+
+  <script>
+    // ---------- Configurable IP ----------
+    let controllerIP = localStorage.getItem('ledIP') || '192.168.4.1';
+    document.getElementById('ipInput').value = controllerIP;
+    document.getElementById('ipInput').addEventListener('change', function() {
+      controllerIP = this.value;
+      localStorage.setItem('ledIP', controllerIP);
+    });
+
+    // The rest of the JavaScript is identical to your ESP page,
+    // but all fetch URLs are prefixed with `http://${controllerIP}`
+    // Example:
+    // fetch(`http://${controllerIP}/setcolor?r=${r}&g=${g}&b=${b}`)
+
+    // (I won't copy the whole JS here – just modify your existing one by
+    // replacing all fetch URLs accordingly and adding the IP input logic.)
+    // ...
+  </script>
+</body>
+</html>
