@@ -1,4 +1,4 @@
-const CACHE_NAME = 'led-controller-v1';
+const CACHE_NAME = 'led-pwa-v1';
 const urlsToCache = [
   '.',
   'index.html',
