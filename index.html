@@ -69,7 +69,9 @@
       controllerIP = this.value;
       localStorage.setItem('ledIP', controllerIP);
     });
-
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
     // The rest of the JavaScript is identical to your ESP page,
     // but all fetch URLs are prefixed with `http://${controllerIP}`
     // Example:
