@@ -3,7 +3,7 @@
 A beautiful, lightweight, and rock‑solid Wi‑Fi LED strip controller built for the **ESP8266 (D1 Mini)**.  
 No cloud, no app – just connect to the ESP’s Wi‑Fi and control your lights from any device’s browser.
 
-![UI Preview](qrcoder.png)
+
 
 ## ✨ Features
 
@@ -70,7 +70,7 @@ All sliders are **debounced** – rapid dragging won’t overload the ESP and ca
 2. Add a short instruction: *“Connect to ARAsHHH, then scan this code.”*
 3. Users simply scan the code and the browser opens directly to the control page.
 
-You can generate a QR code for free at [qr-code-generator.com](https://www.qr-code-generator.com/) or [qrcodemonkey.com](https://www.qrcodemonkey.com/).
+![UI Preview](qrcoder.png)
 
 ## 🔧 Customisation
 
