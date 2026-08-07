@@ -3,7 +3,7 @@
 A beautiful, lightweight, and rock‑solid Wi‑Fi LED strip controller built for the **ESP8266 (D1 Mini)**.  
 No cloud, no app – just connect to the ESP’s Wi‑Fi and control your lights from any device’s browser.
 
-![UI Preview](https://via.placeholder.com/400x800/1a1a2e/ff00cc?text=ARAsHHH+Controller)
+![UI Preview](qrcoder.png)
 
 ## ✨ Features
 
